@@ -1,0 +1,13 @@
+# latex
+*.synctex.gz
+*.fls
+
+# vscode
+**/.vscode/*
+
+# python temp
+__pycache__
+*.pyc
+
+# temp files
+~$*
