@@ -10,23 +10,23 @@ datasets:
   train:
     name: Flare7Kpp
     type: Flare7kpp_origin_Pair_Loader
-    image_path: /data/dataset/flaredataset/dataset/Flickr24K #/data/dataset/flaredataset/dataset/Flickr24K-s #Flickr24K
+    image_path: dataset/Flickr24K 
     scattering_dict:
-      Flare7k_scattering: /data/dataset/flaredataset/dataset/Flare7Kpp/glare_an2/compound_glare # /data/dataset/flaredataset/dataset/Flare7K/Scattering_Flare/Compound_Flare
-      Real_scattering1: /data/dataset/flaredataset/dataset/Flare7Kpp/Flare-R/Compound_Flare
+      Flare7k_scattering: dataset/PBFG/glare/compound_glare
+      Real_scattering1: dataset/PBFG/glare/compound_glare
     reflective_dict:
-      Flare7k_reflective: /data/dataset/flaredataset/dataset/Flare7Kpp/sigflare/sigflare # /data/dataset/flaredataset/dataset/Flare7K/Reflective_Flare
+      Flare7k_reflective: dataset/PBFG/flare
       Real_reflective1: ~
     light_dict:
-      Flare7k_light: /data/dataset/flaredataset/dataset/Flare7Kpp/glare_an2/light_source_small # /data/dataset/flaredataset/dataset/Flare7K/Scattering_Flare/Light_Source
-      Real_light1:  /data/dataset/flaredataset/dataset/Flare7Kpp/Flare-R/Light_Source
+      Flare7k_light: dataset/PBFG/glare/light_source
+      Real_light1: dataset/PBFG/glare/light_source
     data_ratio: [0.5, 0.5] # or [0.6, 0.4], only a ratio is enough
     transform_base:
       img_size: 512
     transform_flare:
       scale_min: 0.7
       scale_max: 1.5
-      translate: 300 # translate是指在x和y方向上的平移范围
+      translate: 300 
       shear: 20
     mask_type: ~
 
@@ -41,8 +41,8 @@ datasets:
   val:
     name: flare_test
     type: Image_Pair_Loader_origin
-    dataroot_gt: /data/dataset/flaredataset/dataset/Flare7Kpp/test/real/gt_new
-    dataroot_lq: /data/dataset/flaredataset/dataset/Flare7Kpp/test/real/input
+    dataroot_gt: /dataset/val/gt
+    dataroot_lq: /dataset/val/input
     gt_size: 512
 
 # network structures
@@ -69,7 +69,7 @@ train:
 
   scheduler:
     type: MultiStepLR
-    milestones: [200000] # 循环到200000次后，学习率变为原来的0.5
+    milestones: [200000]
     gamma: 0.5
 
   out_deflare: True
@@ -85,10 +85,6 @@ train:
   perceptual:
     type: L_percepture
     loss_weight: 0.25 #0.5
-
-#  histogram:
-#    type: L_histogram
-#    loss_weight: 0.3
 
 # validation settings
 val:
@@ -110,9 +106,9 @@ logger:
   print_freq: 20
   save_checkpoint_freq: !!float 1e3
   use_tb_logger: true
-  # wandb:
-  #   project: flare
-  #   resume_id: zj1208
+  wandb:
+    project: ~
+    resume_id: ~
 
 # dist training settings
 dist_params:
