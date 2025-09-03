@@ -15,13 +15,15 @@ Flare and glare are common nighttime artifacts that degrade image quality and hi
 
 ## Dataset Download
 
+We use Git Large File Storage (LFS) to manage the PBFG dataset. So please use LFS to download the dataset.
+ 
 ### PBFG Dataset
 
-The PBFG Dataset can be downloaded in [Google Cloud](https://drive.google.com/file/d/17ZqtR7_Vz-9oL2hB4nhoEOJrv37Hv50J/view?usp=sharing).
+The PBFG Dataset is in `dataset/`.
 
 ### PBStar Dataset
 
-The PBStar Dataset can be downloaded in [Google Cloud](https://drive.google.com/file/d/1-CWEv5_B3q9Kki-_sHtqTO7VFR5ACGbP/view?usp=sharing).
+The PBStar Dataset is in `dataset/PBStar.zip`.
  
 ## Code
 
@@ -49,32 +51,31 @@ The PBStar Dataset can be downloaded in [Google Cloud](https://drive.google.com/
 
 ### Pre-trained Model
 
-Our pretrained checkpoints based on Uformer can be downloaded in:
-[net_g_last_hist.pth](https://drive.google.com/file/d/1CW2po1NvS2kJSF_RSudAMxQ3iXT7TjqT/view?usp=sharing).
+Our pretrained checkpoint is in `code/PBFG/experiments/checkpoint.zip`.
 
 
 ### Test Data
 
-The test dataset are in `dateset\test-set\`.
+The test dataset is in `dataset/test_data.zip`.
 
 
 ### Inference Code
 To estimate the flare/glare-free images with our checkpoint pretrained on PBFG, you can run the `test.py` by using:
 ```
-python test.py --gt dataset/test-set/real/gt  --input dataset/test_data/real/input   --output result/test_real/pbfg/  --model_path experiments/flare7kpp/net_g_last.pth   --flare7kpp
+python test.py --gt dataset/test_data/real/gt  --input dataset/test_data/real/input   --output result/test_real/pbfg/  --model_path experiments/checkpoint/net_g_last.pth   --flare7kpp
 ```
 
 ### Evaluation Code
 To calculate different metrics with our pretrained model, you can run the `evaluate.py` by using:
 ```
-python evaluate.py --input result/test_real/pbfg/blend/  --gt  dataset/test-set/real/gt/ --mask  dataset/Flare7Kpp/test_data/real/mask/
+python evaluate.py --input result/test_real/pbfg/blend/  --gt  dataset/test_data/real/gt/ --mask  dataset/test_data/real/mask/
 ```
 
 ### Training model
 
 **Training with single GPU**
 
-To train a model with your own data/model, you can edit the `options/uformer_flare7k_option.yml` and run the following codes. You can also add `--debug` command to start the debug mode:
+To train a model with your own data/model, you can edit the `options/uformer_flare7kpp_baseline_option.yml` and run the following codes. You can also add `--debug` command to start the debug mode:
 
 ```
 python basicsr/train.py -opt options/uformer_flare7kpp_baseline_option.yml
@@ -105,7 +106,7 @@ CUDA_VISIBLE_DEVICES=0,1 bash scripts/dist_train.sh 2 options/uformer_flare7kpp_
 
 ### License
 
-This project is licensed under <a rel="license" href="https://github.com/cgskku/pbfg/blob/main/code/PBFG/LICENSE">CGLab License 1.0</a>. Redistribution and use of the dataset and code for non-commercial purposes should follow this license.
+This project is licensed under CC BY-NC-SA 4.0. Redistribution and use of the dataset and code for non-commercial purposes should follow this license.
 
 ### Citation
 
