@@ -113,11 +113,13 @@ This project is licensed under CC BY-NC-SA 4.0. Redistribution and use of the da
 If you find this work useful, please cite:
 
 ```
-@inproceedings{zhu2025pbfg,
-  title={PBFG: A New Physically-Based Dataset and Removal of Lens Flares and Glares},
-  author={Zhu, Jie and Lee, Sungkil},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-  year={2025}
+@InProceedings{Zhu_2025_ICCV,
+    author    = {Zhu, Jie and Lee, Sungkil},
+    title     = {PBFG: A New Physically-Based Dataset and Removal of Lens Flares and Glares},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2025},
+    pages     = {5448-5457}
 }
 ```
 
