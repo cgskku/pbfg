@@ -21,9 +21,14 @@ We use Git Large File Storage (LFS) to manage the PBFG dataset. So please use LF
 
 The PBFG Dataset is in `dataset/`.
 
+You can also download the dataset from [Google Drive](https://drive.google.com/file/d/1gupy8c9vBBtkwKY7dQx5GssXySvib13K/view?usp=sharing).
+
+
 ### PBStar Dataset
 
 The PBStar Dataset is in `dataset/PBStar.zip`.
+
+You can also download the dataset from [Google Drive](https://drive.google.com/file/d/1rfm59PQDgJtlj5fzwDbiKqqQcQ6quz6i/view?usp=sharing).
  
 ## Code
 
